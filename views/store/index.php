@@ -1,26 +1,25 @@
 <?php
 
-use app\models\Category;
+use app\models\Store;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\CategorySearch $searchModel */
+/** @var app\models\StoreSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Categories';
+$this->title = 'Stores';
 $this->params['breadcrumbs'][] = $this->title;
 $this->context->layout = 'create2_main';
-
 ?>
-<div class="category-index">
+<div class="store-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Store', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -30,9 +29,8 @@ $this->context->layout = 'create2_main';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            
             'name',
+            'address',
             [
                 'attribute' => 'created_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
@@ -40,11 +38,11 @@ $this->context->layout = 'create2_main';
             [
                 'attribute' => 'updated_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],     
-            'created_by',
+            ],    
+            'created_by',    
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Category $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Store $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],

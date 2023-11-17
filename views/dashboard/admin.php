@@ -1,7 +1,7 @@
 <?php
 
 
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
  
    

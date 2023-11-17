@@ -9,7 +9,7 @@ $this->title = 'Create Category';
 $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="category-create">
 

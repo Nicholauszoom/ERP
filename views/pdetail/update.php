@@ -9,7 +9,7 @@ $this->title = 'Update Pdetail: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Pdetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 ?>
 <div class="pdetail-update">

@@ -14,7 +14,7 @@ use yii\grid\GridView;
 $this->title = 'Purchases';
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 
 <div class="purchase-index">

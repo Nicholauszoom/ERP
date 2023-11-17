@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Create Customer';
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="customer-create">
 

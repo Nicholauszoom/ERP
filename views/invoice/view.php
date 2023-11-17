@@ -13,7 +13,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Invoices', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 $invoice=Idetail::find()->where(['invoice_id'=>$model->id])->all();
 

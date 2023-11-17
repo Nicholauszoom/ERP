@@ -437,7 +437,27 @@ $sidebarItems = [
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
+                    ><i class="fa fa-power-off me-1 ms-1"></i>
+                    <?php
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav'],
+        'items' => [
+            
+            Yii::$app->user->isGuest
+                ? ['label' => 'Login', 'url' => ['/site/login']]
+                : '<li class="nav-item">'
+                    . Html::beginForm(['/site/logout'])
+                    . Html::submitButton(
+                        'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['class' => 'nav-link btn btn-link logout']
+                    )
+                    . Html::endForm()
+                    . '</li>'
+        ]
+    ]);
+    
+    ?>
+                    </a
                   >
                   <div class="dropdown-divider"></div>
                   <div class="ps-4 p-10">

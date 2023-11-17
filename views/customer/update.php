@@ -9,7 +9,7 @@ $this->title = 'Update Customer: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 ?>
 <div class="customer-update">

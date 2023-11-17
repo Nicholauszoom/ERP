@@ -3,15 +3,15 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\models\Tax $model */
+/** @var app\models\Store $model */
 
-$this->title = 'Create Tax';
-$this->params['breadcrumbs'][] = ['label' => 'Taxes', 'url' => ['index']];
+$this->title = 'Create Store';
+$this->params['breadcrumbs'][] = ['label' => 'Stores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $this->context->layout = 'create2_main';
 ?>
-<div class="tax-create">
+<div class="store-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

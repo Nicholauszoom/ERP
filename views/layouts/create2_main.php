@@ -51,34 +51,36 @@ $sidebarItems = [
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="/assets/images/favicon.png"
+      href="../assets/images/favicon.png"
     />
     <!-- Custom CSS -->
     <link
       rel="stylesheet"
       type="text/css"
-      href="/assets/libs/select2/dist/css/select2.min.css"
+      href="../assets/libs/select2/dist/css/select2.min.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/assets/libs/jquery-minicolors/jquery.minicolors.css"
+      href="../assets/libs/jquery-minicolors/jquery.minicolors.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
+      href="../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"
     />
     <link
       rel="stylesheet"
       type="text/css"
-      href="/assets/libs/quill/dist/quill.snow.css"
+      href="../assets/libs/quill/dist/quill.snow.css"
     />
-    <link href="/dist/css/style.min.css" rel="stylesheet" />
+    <link href="../dist/css/style.min.css" rel="stylesheet" />
   
     <link
       rel="icon"
@@ -87,10 +89,7 @@ $sidebarItems = [
       href="../assets/images/favicon.png"
     />
     <!-- Custom CSS -->
-    <link href="/assets/libs/flot/css/float-chart.css" rel="stylesheet" />
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
     <!-- Custom CSS -->
   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,62 +99,16 @@ $sidebarItems = [
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <?php $this->head();
-    
-
-    echo Html::cssFile('@web/vendors/bootstrap/dist/css/bootstrap.min.css');
-    echo Html::cssFile('@web/vendors/font-awesome/css/font-awesome.min.css');
-    echo Html::cssFile('@web/vendors/nprogress/nprogress.css');
-    echo Html::cssFile('@web/vendors/iCheck/skins/flat/green.css');
-    echo Html::cssFile('@web/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css');
-    echo Html::cssFile('@web/vendors/jqvmap/dist/jqvmap.min.css');
-    echo Html::cssFile('@web/vendors/bootstrap-daterangepicker/daterangepicker.css');
-    echo Html::cssFile('@web/build/css/custom.min.css');
-    echo Html::cssFile('href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"');
-    // echo Html::cssFile('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.3/font/bootstrap-icons.css');
-    echo Html::cssFile('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');
-
-    $this->registerCssFile('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-    // $this->registerJsFile('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
 
 
-
-    // echo Html::img('@web/images/favicon.png', ['alt' => 'Image'ng">
-
-
-  
-$this->registerJsFile('@web/vendors/jquery/dist/jquery.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/bootstrap/dist/js/bootstrap.bundle.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/fastclick/lib/fastclick.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/nprogress/nprogress.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/Chart.js/dist/Chart.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/gauge.js/dist/gauge.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/iCheck/icheck.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/skycons/skycons.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/Flot/jquery.flot.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/Flot/jquery.flot.pie.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/Flot/jquery.flot.time.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/Flot/jquery.flot.resize.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/flot.orderbars/js/jquery.flot.orderBars.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/flot-spline/js/jquery.flot.spline.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/flot.curvedlines/curvedLines.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/DateJS/build/date.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/jqvmap/dist/jquery.vmap.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/jqvmap/dist/maps/jquery.vmap.world.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/vendors/bootstrap-daterangepicker/daterangepicker.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('@web/build/js/custom.min.js', ['depends' => 'yii\web\YiiAsset']);
-$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.min.js');
-$this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
 
       // echo Html::img('@web/images/favicon.png', ['alt' => 'Image'ng">
 
  // $this->registerJsFile('@web/select2/dist/js/select2.min.js', ['depends' => 'yii\web\YiiAsset']);
 
- 
-
     ?>
 
-   
+
 </head>
 <body>
   <?php $this->beginBody() ?>
@@ -484,7 +437,9 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
                   >
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
+                    ><i class="fa fa-power-off me-1 ms-1"></i>
+                   
+                    </a
                   >
                   <div class="dropdown-divider"></div>
                   <div class="ps-4 p-10">
@@ -539,10 +494,10 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/sales"
+                  href="/customer"
                   aria-expanded="false"
                   ><i class="mdi mdi-border-inside"></i
-                  ><span class="hide-menu">Sales</span></a
+                  ><span class="hide-menu">Customer</span></a
                 >
               </li>
               <li class="sidebar-item">
@@ -579,7 +534,7 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
                   aria-expanded="false"
                   ><i class="mdi mdi-account-multiple"></i
                   ><span class="hide-menu">Users</span></a
-                >
+
               </li>
               <li class="sidebar-item">
                 <a
@@ -593,7 +548,7 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/invoices"
+                  href="/invoice"
                   aria-expanded="false"
                   ><i class="mdi mdi-relative-scale"></i
                   ><span class="hide-menu">Invoices</span></a
@@ -619,7 +574,7 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
                   ><span class="hide-menu">Settings</span></a
                 >
               </li>
-            
+            </ul>
           </nav>
           <!-- End Sidebar navigation -->
         </div>
@@ -688,6 +643,8 @@ $this->registerJsFile('@web/js/dashjs.js', ['depends' => 'yii\web\YiiAsset']);
     <script src="assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
     <script src="assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
     <script src="assets/libs/quill/dist/quill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
     <script>
       //***********************************//
       // For select 2

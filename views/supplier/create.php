@@ -9,7 +9,7 @@ $this->title = 'Create Supplier';
 $this->params['breadcrumbs'][] = ['label' => 'Suppliers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="supplier-create">
 

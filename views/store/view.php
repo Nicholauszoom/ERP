@@ -4,15 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Supplier $model */
+/** @var app\models\Store $model */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Suppliers', 'url' => ['index']];
+$this->title = $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Stores', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $this->context->layout = 'create2_main';
 ?>
-<div class="supplier-view">
+<div class="store-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,19 +31,11 @@ $this->context->layout = 'create2_main';
         'model' => $model,
         'attributes' => [
             'id',
-            'company',
+            'created_at',
+            'updated_at',
+            'created_by',
+            'name',
             'address',
-            'phone',
-            'email:email',
-            [
-                'attribute' => 'created_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],            
-            'created_by'
         ],
     ]) ?>
 

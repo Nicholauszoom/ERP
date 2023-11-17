@@ -9,7 +9,7 @@ $this->title = 'Update Tax: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Taxes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="tax-update">
 

@@ -10,7 +10,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Pdetails', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 ?>
 <div class="pdetail-view">

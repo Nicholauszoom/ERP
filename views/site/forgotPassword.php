@@ -3,13 +3,20 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->context->layout = 'main3';
 
 
 $form = ActiveForm::begin([
     'id' => 'forgot-password-form',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
+
+<style>
+    
+.content {
+margin-top: 5%;
+}
+</style>
+<div class="content">
 
 <div class="templateux-section pt-0 pb-0">
       <div class="container">
@@ -26,7 +33,8 @@ $form = ActiveForm::begin([
 </div>
       </div>
 </div>
-
+    
+</div>
 <?php ActiveForm::end() ?>
 
    

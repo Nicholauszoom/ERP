@@ -11,7 +11,6 @@ use yii\helpers\ArrayHelper;
 
 $this->title = 'Resert Password';
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'main3';
 // $this->context->layout = 'admin';
 
 ?>

@@ -13,7 +13,7 @@ $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Purchases', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 $purchase=Pdetail::find()->where(['purchase_id'=>$model->id])->all();
 $total_amount= 0;
 foreach ($purchase as $purchase_details) {

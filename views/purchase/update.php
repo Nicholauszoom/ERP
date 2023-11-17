@@ -9,7 +9,7 @@ $this->title = 'Update Purchase: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Purchases', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
-$this->context->layout = 'index_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="purchase-update">
 

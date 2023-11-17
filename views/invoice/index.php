@@ -12,7 +12,7 @@ use yii\helpers\Url;
 
 $this->title = 'Invoices';
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 ?>
 <div class="invoice-index">

@@ -66,6 +66,10 @@ use yii\helpers\Html;
 
     ?>
 <style>
+body {
+    background-color: #f3f3f3;
+   
+}
 
 .loading-bar-container {
   display: flex;
