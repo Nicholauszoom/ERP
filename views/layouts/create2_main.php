@@ -7,6 +7,7 @@ use app\assets\AppAsset;
 use app\assets\CustomAsset;
 use app\assets\RealAsset;
 use app\models\Project;
+use app\models\Setting;
 use app\models\Tender;
 use app\models\UserAssignment;
 use app\widgets\Alert;
@@ -28,8 +29,11 @@ $this->registerMetaTag(['charset' => Yii::$app->charset], 'charset');
 $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no']);
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
-$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
-
+$setting=Setting::findOne(1);
+$fileName = $setting->logo;
+$filePath = Yii::getAlias('@webroot/upload/' . $fileName);
+$downloadPath = Yii::getAlias('@web/upload/' . $fileName);
+$this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias($downloadPath)]);
 
 
 $currentUrl = Url::toRoute(Yii::$app->controller->getRoute());
@@ -57,7 +61,7 @@ $sidebarItems = [
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="../assets/images/favicon.png"
+      href=""
     />
     <!-- Custom CSS -->
     <link
@@ -142,22 +146,23 @@ $sidebarItems = [
               <b class="logo-icon ps-2">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                 <!-- Dark Logo icon -->
+                <?php
+                $setting=Setting::findOne(1);
+                $fileName = $setting->logo;
+                $filePath = Yii::getAlias('@webroot/upload/' . $fileName);
+                $downloadPath = Yii::getAlias('@web/upload/' . $fileName);
+                ?>
                 <img
-                  src="../assets/images/logo-icon.png"
+                  src=<?=$downloadPath?>
                   alt="homepage"
                   class="light-logo"
-                  width="25"
                 />
               </b>
               <!--End Logo icon -->
               <!-- Logo text -->
               <span class="logo-text ms-2">
                 <!-- dark Logo text -->
-                <img
-                  src="../assets/images/logo-text.png"
-                  alt="homepage"
-                  class="light-logo"
-                />
+              
               </span>
               <!-- Logo icon -->
               <!-- <b class="logo-icon"> -->
@@ -213,8 +218,7 @@ $sidebarItems = [
                   aria-expanded="false"
                 >
                   <span class="d-none d-md-block"
-                    >Create New <i class="fa fa-angle-down"></i
-                  ></span>
+                    ></span>
                   <span class="d-block d-md-none"
                     ><i class="fa fa-plus"></i
                   ></span>
@@ -421,7 +425,7 @@ $sidebarItems = [
                   class="dropdown-menu dropdown-menu-end user-dd animated"
                   aria-labelledby="navbarDropdown"
                 >
-                  <a class="dropdown-item" href="javascript:void(0)"
+                  <a class="dropdown-item" href="/site/profile"
                     ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
                   >
                   <a class="dropdown-item" href="javascript:void(0)"
@@ -431,7 +435,7 @@ $sidebarItems = [
                     ><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="javascript:void(0)"
+                  <a class="dropdown-item" href="/setting"
                     ><i class="mdi mdi-settings me-1 ms-1"></i> Account
                     Setting</a
                   >
@@ -444,7 +448,7 @@ $sidebarItems = [
                   <div class="dropdown-divider"></div>
                   <div class="ps-4 p-10">
                     <a
-                      href="javascript:void(0)"
+                      href="/site/profile"
                       class="btn btn-sm btn-success btn-rounded text-white"
                       >View Profile</a
                     >
@@ -530,7 +534,7 @@ $sidebarItems = [
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/users"
+                  href="/user"
                   aria-expanded="false"
                   ><i class="mdi mdi-account-multiple"></i
                   ><span class="hide-menu">Users</span></a
@@ -615,7 +619,6 @@ $sidebarItems = [
           <div class="pull-right" >
             Teratech - web application <a href="teratech.co.tz">about us</a>
           </div>
-          <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
         </div>

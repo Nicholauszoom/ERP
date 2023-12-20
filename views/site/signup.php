@@ -11,7 +11,7 @@ use yii\helpers\ArrayHelper;
 
 $this->title = 'Assign New User';
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 
 ?>
 
@@ -59,8 +59,8 @@ $this->context->layout = 'create_main';
 
             <?= $form->field($model, 'gender')->dropDownList(
                    [
-                    'male' => 'Male',
-                    'female' => 'Female',
+                    '0' => 'Male',
+                    '1' => 'Female',
                      ],
                   ['prompt' => 'Select Gender']
                  )?>

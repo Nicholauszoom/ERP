@@ -8,7 +8,7 @@ use yii\helpers\Html;
 $this->title = 'Create Purch Detail';
 $this->params['breadcrumbs'][] = ['label' => 'Purch Details', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'create2_main';
+$this->context->layout = 'index_main';
 
 ?>
 <div class="pdetail-index">

@@ -38,7 +38,6 @@ use yii\widgets\ActiveForm;
 
     </div>
     <div class="col-md-4">
-    <?= $form->field($model, 'invoice_id')->hiddenInput(['value' => $invoiceId])->label(false)?>
 
     <?= $form->field($model, 'city')->label('City * <small class="text-muted">eg.Dar es salaam, Kinondoni</small>')->textInput(['maxlength' => true]) ?>
     </div>

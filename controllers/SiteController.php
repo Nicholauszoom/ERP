@@ -305,4 +305,40 @@ public function actionResetPassword($token)
     ]);
 }
 
+
+public function actionUpdate($id)
+{
+    $model = User::findOne($id);
+
+    if ($model->load(Yii::$app->request->post())) {
+        
+        if($model->save()){
+            return $this->redirect(['user/view', 'id' => $model->id]);
+        }
+       
+      
+    }
+
+    return $this->render('update', [
+        'model' => $model,
+    ]);
+}
+
+
+public function actionProfile(){
+
+    $userId= Yii::$app->user->id;
+
+    //get login user account profile
+    $profile = User::findOne($userId);
+
+  
+
+
+    return $this->render('profile',[
+        'profile'=>$profile,
+       
+    ]);
+}
+
 }

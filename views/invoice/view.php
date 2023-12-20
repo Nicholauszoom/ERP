@@ -31,6 +31,28 @@ $invoice=Idetail::find()->where(['invoice_id'=>$model->id])->all();
                 'method' => 'post',
             ],
         ]) ?>
+
+
+
+
+<?php if($model->status===1 || $model->status===3 && Yii::$app->user->can('admin') && Yii::$app->user->can('author')):?>
+<?= Html::a('Approve', ['approve', 'invoiceId' => $model->id], [
+    'class' => 'btn btn-success',
+    'data' => [
+        'confirm' => 'Are you sure you want to change the status to approve of this item?',
+        'method' => 'post',
+    ],
+]) ?>
+
+<?= Html::a('Not approve', ['notapprove', 'invoiceId' => $model->id], [
+    'class' => 'btn btn-secondary',
+    'data' => [
+        'confirm' => 'Are you sure you want to change the status to not approve of this item?',
+        'method' => 'post',
+    ],
+]) ?>
+<?php endif;?>
+
     </p>
 
     <?= DetailView::widget([
@@ -187,7 +209,8 @@ function getStatusLabel($status)
 {
     $statusLabels = [
         1 => 'open',
-        2 => 'paid',
+        2 => 'Approved',
+        3 => 'Not Approved'
         
 
        

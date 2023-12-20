@@ -70,6 +70,8 @@ $this->context->layout = 'create2_main';
                 },
             ],
             'supplier_cost',
+            'cost',
+            'rental',
             [
                 'attribute' => 'created_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
@@ -79,6 +81,7 @@ $this->context->layout = 'create2_main';
                 'format' => ['date', 'php:Y-m-d H:i:s'],
             ],            
             'created_by',
+
             
         ],
     ]) ?>

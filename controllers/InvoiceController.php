@@ -102,6 +102,39 @@ class InvoiceController extends Controller
     }
 
 
+    public function actionApprove($invoiceId)
+    {
+       
+            $invoice=Invoice::findOne($invoiceId);
+
+            
+            // Update the status in the database based on the tender ID
+            // Replace 'YourModel' with your actual model class name, 'status' with the database column name, and 'tenderId' with the appropriate tender ID column name
+            $invoice->status= 2;
+            Invoice::updateAll(['status' => $invoice->status], ['id' => $invoiceId]);
+            
+            return $this->redirect(['invoice/view', 'id' => $invoiceId]);
+        
+        
+        return 'Error'; // Return an error message or any other response if needed
+    }
+    public function actionNotapprove($invoiceId)
+    {
+       
+            $invoice=Invoice::findOne($invoiceId);
+
+            
+            // Update the status in the database based on the tender ID
+            // Replace 'YourModel' with your actual model class name, 'status' with the database column name, and 'tenderId' with the appropriate tender ID column name
+            $invoice->status= 3;
+            Invoice::updateAll(['status' => $invoice->status], ['id' => $invoiceId]);
+            
+            return $this->redirect(['invoice/view', 'id' => $invoiceId]);
+        
+        
+        return 'Error'; // Return an error message or any other response if needed
+    }
+
     /**
      * Creates a new Invoice model.
      * If creation is successful, the browser will be redirected to the 'view' page.

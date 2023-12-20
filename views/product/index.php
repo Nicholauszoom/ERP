@@ -71,16 +71,8 @@ $this->context->layout = 'create2_main';
                 },
             ],
             'supplier_cost',
-            [
-                'attribute' => 'created_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],            
-            'created_by',
-            
+            'cost',
+            'rental',
 
             [
                 'class' => ActionColumn::className(),

@@ -1,5 +1,10 @@
 <?php
-
+use app\models\Customer;
+use app\models\Product;
+use app\models\Purchase;
+use app\models\Store;
+use app\models\Supplier;
+use app\models\User;
 
 $this->context->layout = 'create2_main';
 ?>
@@ -22,6 +27,10 @@ $this->context->layout = 'create2_main';
               </div>
             </div>
             <!-- Column -->
+            <?php 
+            $products=Product::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-4 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-success text-center">
@@ -29,7 +38,9 @@ $this->context->layout = 'create2_main';
                     <i class="mdi mdi-barcode"></i>
                   </h1>
                   <h6 class="text-white">Products</h6>
+                  <h6 class="text-white"><?=$products?></h6>
                 </div>
+                
               </div>
             </div>
             <!-- Column -->
@@ -44,6 +55,10 @@ $this->context->layout = 'create2_main';
               </div>
             </div>
             <!-- Column -->
+            <?php 
+            $purchase=Purchase::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
@@ -51,6 +66,7 @@ $this->context->layout = 'create2_main';
                     <i class="mdi mdi-cart"></i>
                   </h1>
                   <h6 class="text-white">Purchase</h6>
+                  <h6 class="text-white"><?=$purchase?></h6>
                 </div>
               </div>
             </div>
@@ -67,6 +83,10 @@ $this->context->layout = 'create2_main';
             </div>
             <!-- Column -->
             <!-- Column -->
+            <?php 
+            $customer=Customer::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-4 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
@@ -74,10 +94,15 @@ $this->context->layout = 'create2_main';
                     <i class="fas fa-users"></i>
                   </h1>
                   <h6 class="text-white">Customers</h6>
+                  <h6 class="text-white"><?=$customer?></h6>
                 </div>
               </div>
             </div>
             <!-- Column -->
+            <?php 
+            $user=User::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-info text-center">
@@ -85,10 +110,15 @@ $this->context->layout = 'create2_main';
                     <i class="fas fa-user"></i>
                   </h1>
                   <h6 class="text-white">Users</h6>
+                  <h6 class="text-white"><?=$user?></h6>
                 </div>
               </div>
             </div>
             <!-- Column -->
+            <?php 
+            $supplier=Supplier::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-cyan text-center">
@@ -96,10 +126,16 @@ $this->context->layout = 'create2_main';
                     <i class="fas fa-briefcase"></i>
                   </h1>
                   <h6 class="text-white">Suppliers</h6>
+                  <h6 class="text-white"><?=$supplier?></h6>
+
                 </div>
               </div>
             </div>
             <!-- Column -->
+            <?php 
+            $store=Store::find()->count();
+            
+            ?>
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-success text-center">
@@ -107,6 +143,8 @@ $this->context->layout = 'create2_main';
                     <i class="mdi mdi-calendar-check"></i>
                   </h1>
                   <h6 class="text-white">Warehouse</h6>
+                  <h6 class="text-white"><?=$store?></h6>
+
                 </div>
               </div>
             </div>
@@ -126,79 +164,7 @@ $this->context->layout = 'create2_main';
           <!-- ============================================================== -->
           <!-- Sales chart -->
           <!-- ============================================================== -->
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-md-flex align-items-center">
-                    <div>
-                      <h4 class="card-title">Sales </h4>
-                      <h5 class="card-subtitle">Overview </h5>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-9">
-                      <div class="flot-chart">
-                        <div
-                          class="flot-chart-content"
-                          id="flot-line-chart"
-                        ></div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3">
-                      <div class="row">
-                        <div class="col-6">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-account fs-3 mb-1 font-16"></i>
-                            <h5 class="mb-0 mt-1">2540</h5>
-                            <small class="font-light">Total Users</small>
-                          </div>
-                        </div>
-                        <div class="col-6">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-plus fs-3 font-16"></i>
-                            <h5 class="mb-0 mt-1">120</h5>
-                            <small class="font-light">New Users</small>
-                          </div>
-                        </div>
-                        <div class="col-6 mt-3">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-cart fs-3 mb-1 font-16"></i>
-                            <h5 class="mb-0 mt-1">656</h5>
-                            <small class="font-light">Total Shop</small>
-                          </div>
-                        </div>
-                        <div class="col-6 mt-3">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-tag fs-3 mb-1 font-16"></i>
-                            <h5 class="mb-0 mt-1">9540</h5>
-                            <small class="font-light">Total Orders</small>
-                          </div>
-                        </div>
-                        <div class="col-6 mt-3">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-table fs-3 mb-1 font-16"></i>
-                            <h5 class="mb-0 mt-1">100</h5>
-                            <small class="font-light">Pending Orders</small>
-                          </div>
-                        </div>
-                        <div class="col-6 mt-3">
-                          <div class="bg-dark p-10 text-white text-center">
-                            <i class="mdi mdi-web fs-3 mb-1 font-16"></i>
-                            <h5 class="mb-0 mt-1">8540</h5>
-                            <small class="font-light">Online Orders</small>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- column -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-   
+    
         </div>
     
         <footer class="footer text-center">

@@ -56,8 +56,8 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'created_by', 'updated_by', 'categorie_id', 'tax_id', 'supplier_id'], 'integer'],
-            [[ 'name', 'categorie_id', 'cost', 'price', 'quantity', 'unit', 'rental', 'tax_id', 'supplier_id', 'supplier_cost'], 'required'],
+            [['created_at', 'updated_at', 'created_by', 'updated_by', 'categorie_id', 'tax_id', 'supplier_id','profit'], 'integer'],
+            [[ 'name', 'categorie_id', 'cost', 'price', 'quantity', 'unit', 'rental', 'tax_id', 'supplier_id', 'supplier_cost','profit'], 'required'],
             [['code', 'name', 'material', 'cost', 'price', 'quantity', 'unit', 'rental', 'supplier_cost','sale'], 'string', 'max' => 255],
         ];
     }
@@ -77,15 +77,16 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Product Name',
             'material' => 'Material Type',
             'categorie_id' => 'Product Category',
-            'cost' => 'Cost',
+            'cost' => 'Expected Selling Price',
             'price' => 'Price',
             'quantity' => 'QTY',
             'unit' => 'Unit',
             'sale'=>'Sale',
-            'rental' => 'Rental Tax',
+            'rental' => 'Transport Charges',
             'tax_id' => 'Tax Method',
             'supplier_id' => 'Supplier',
             'supplier_cost' => 'Supplier Cost',
+            'profit'=>'Profit'
         ];
     }
 

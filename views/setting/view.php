@@ -4,15 +4,16 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
-/** @var app\models\Tax $model */
+/** @var app\models\Setting $model */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Taxes', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Settings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $this->context->layout = 'create2_main';
+
 ?>
-<div class="tax-view">
+<div class="setting-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -31,16 +32,15 @@ $this->context->layout = 'create2_main';
         'model' => $model,
         'attributes' => [
             'id',
-            'method',
-            [
-                'attribute' => 'created_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],   
+            'created_at',
+            'updated_at',
             'created_by',
+            'comapny',
+            'logo',
+            'email:email',
+            'password',
+            'address',
+            'phone',
         ],
     ]) ?>
 

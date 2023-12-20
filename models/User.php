@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 use yii\web\IdentityInterface;
 use app\components\UserIdentity;
 
@@ -25,7 +27,18 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return 'user';
     }
-
+    public function behaviors(){
+        return [
+            TimestampBehavior::class,
+            [
+                'class'=>BlameableBehavior::class,
+                'updatedByAttribute'=>false,
+            ],
+          
+           
+            
+        ];
+    }
     /**
      * {@inheritdoc}
      */

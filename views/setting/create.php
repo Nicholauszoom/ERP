@@ -3,20 +3,20 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\models\Customer $model */
+/** @var app\models\Setting $model */
 
-$this->title = 'Create Customer';
-$this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
+$this->title = 'Create Setting';
+$this->params['breadcrumbs'][] = ['label' => 'Settings', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->context->layout = 'create2_main';
+
 ?>
-<div class="customer-create">
+<div class="setting-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,
-       
     ]) ?>
 
 </div>

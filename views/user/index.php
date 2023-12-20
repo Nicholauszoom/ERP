@@ -1,28 +1,26 @@
 <?php
 
-use app\models\Customer;
+use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\CustomerSearch $searchModel */
+/** @var app\models\UserSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Customers';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 $this->context->layout = 'create2_main';
 
 ?>
-<div class="customer-index">
+<div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-   
-        <?= Html::a('Create Customer', ['create'], ['class' => 'btn btn-success']) ?>
-    
+        <?= Html::a('Create User', ['site/signup'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -32,12 +30,15 @@ $this->context->layout = 'create2_main';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id',
-            'name',
-            'phone',
+            'username',
+            [
+                'attribute' => 'gender',
+                'value' => function ($model) {
+                    return getUserLabel($model->gender);
+                },
+            ],
             'email:email',
             'address',
-            'city',
             [
                 'attribute' => 'created_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
@@ -45,11 +46,11 @@ $this->context->layout = 'create2_main';
             [
                 'attribute' => 'updated_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],     
-            'created_by',
+            ],   
+            'created_by',     
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Customer $model, $key, $index, $column) {
+                'urlCreator' => function ($action, User $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
@@ -58,3 +59,21 @@ $this->context->layout = 'create2_main';
 
 
 </div>
+
+
+<?php
+
+function getUserLabel($status)
+{
+    $statusLabels = [
+        0 => 'Male',
+        1 => 'Female',
+        
+
+       
+    ];
+
+    return isset($statusLabels[$status]) ? $statusLabels[$status] : '';
+}
+
+?>

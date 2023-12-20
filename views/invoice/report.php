@@ -46,7 +46,7 @@ $this->context->layout = 'create_main';
             <?php
             $customer=Customer::findOne(['invoice_id'=>$invoice->id]);
             ?>
-            <?php if($cus !== null):?>
+            <?php if($customer !== null):?>
             <h6>Name: <?=$customer->name?></h6>
             <h6>Adress: <?=$customer->address?></h6>
             <h6>City: <?=$customer->city?></h6>
@@ -65,9 +65,6 @@ $this->context->layout = 'create_main';
       <th scope="col">Qty</th>
       <th scope="col">Unit price</th>
       <th scope="col">Amount</th>
-      <th scope="col">Created</th>
-      <th scope="col">Updated</th>
-      <th scope="col">Created By</th>
       <th scope="col"></th>
     </tr>
     </thead>
@@ -85,9 +82,6 @@ $this->context->layout = 'create_main';
         <td><?= $invoiced->quantity ?></td>
         <td><?= $invoiced->unit_price ?></td>
         <td><?= $invoiced->amount ?></td>
-        <td><?= Yii::$app->formatter->asDatetime($invoiced->created_at) ?></td>
-        <td><?= Yii::$app->formatter->asDatetime($invoiced->updated_at) ?></td>
-        
         <td>
         
                 <?= Html::a('<span class="glyphicon glyphicon-edit"></span>', ['update', 'id' => $invoiced->id], [

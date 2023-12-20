@@ -89,7 +89,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-4">
         
-    <?= $form->field($model, 'profit')->label('Supplier Price * <small class="text-muted">%</small>')->dropDownList([
+    <?= $form->field($model, 'profit')->label('Profit % * <small class="text-muted">% profit need per each product</small>')->dropDownList([
     '0' => '0%',
     '5' => '5%',
     '10' => '10%',
