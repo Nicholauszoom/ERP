@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Product;
 use app\models\Purchase;
 use app\models\Supplier;
 use yii\helpers\Html;
@@ -13,10 +14,8 @@ use yii\grid\GridView;
 
 $this->title = 'Purchases';
 $this->params['breadcrumbs'][] = $this->title;
-
 $this->context->layout = 'create2_main';
 ?>
-
 <div class="purchase-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -32,36 +31,43 @@ $this->context->layout = 'create2_main';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            
+
             [
-                'attribute' => 'requested_by',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
+                'attribute'=>'product',
+                'format'=>'raw',
+                'value'=>function ($model){
+                    $product = Product::findOne($model->product);
+                    $prod = $product ? $product->name : 'Unknown';
+                     return $prod;
+                },
+            ],
+            [
+                'attribute' => 'price',
+                'value' => function ($model) {
+                    return number_format($model->price, 2, '.', ',');
+                },
+            ],
+            'quantity',
+            [
+                'attribute' => 'amount',
+                'value' => function ($model) {
+                    return number_format($model->amount, 2, '.', ',');
+                },
             ],
             [
                 'attribute'=>'supplier_id',
                 'format'=>'raw',
                 'value'=>function ($model){
-                    $suplier = Supplier::findOne($model->supplier_id);
-                    $name = $suplier ? $suplier->company : 'Unknown';
-                     return $name;
+                    $supplier = Supplier::findOne($model->supplier_id);
+                    $company = $supplier ? $supplier->company : 'Unknown';
+                     return $company;
                 },
             ],
-           
-            [
-                'attribute' => 'pay_tems',
-                'value' => function ($model) {
-                    return getStatusLabel($model->pay_tems);
-                },
-            ],
-            [
-                'attribute' => 'created_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'php:Y-m-d H:i:s'],
-            ],            
-            'created_by',
+            //'transport',
+            //'expenses',
+            //'tax_id',
+            //'profit',
+            //'sale',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Purchase $model, $key, $index, $column) {
@@ -73,19 +79,3 @@ $this->context->layout = 'create2_main';
 
 
 </div>
-<?php
-
-function getStatusLabel($status)
-{
-    $statusLabels = [
-        1 => 'cheque',
-        2 => 'cash',
-        
-
-       
-    ];
-
-    return isset($statusLabels[$status]) ? $statusLabels[$status] : '';
-}
-
-?>

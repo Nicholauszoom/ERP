@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Purchase;
+use app\models\Stock;
 
 /**
- * PurchaseSearch represents the model behind the search form of `app\models\Purchase`.
+ * StockSearch represents the model behind the search form of `app\models\Stock`.
  */
-class PurchaseSearch extends Purchase
+class StockSearch extends Stock
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class PurchaseSearch extends Purchase
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at', 'created_by', 'product', 'tax_id'], 'integer'],
-            [['price', 'quantity', 'amount', 'transport', 'expenses', 'profit', 'sale'], 'safe'],
+            [['id', 'created_at', 'updated_at', 'created_by', 'supplier_id'], 'integer'],
+            [['product', 'quantity', 'amount'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PurchaseSearch extends Purchase
      */
     public function search($params)
     {
-        $query = Purchase::find();
+        $query = Stock::find();
 
         // add conditions that should always apply here
 
@@ -62,17 +62,12 @@ class PurchaseSearch extends Purchase
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
-            'product' => $this->product,
-            'tax_id' => $this->tax_id,
+            'supplier_id' => $this->supplier_id,
         ]);
 
-        $query->andFilterWhere(['like', 'price', $this->price])
+        $query->andFilterWhere(['like', 'product', $this->product])
             ->andFilterWhere(['like', 'quantity', $this->quantity])
-            ->andFilterWhere(['like', 'amount', $this->amount])
-            ->andFilterWhere(['like', 'transport', $this->transport])
-            ->andFilterWhere(['like', 'expenses', $this->expenses])
-            ->andFilterWhere(['like', 'profit', $this->profit])
-            ->andFilterWhere(['like', 'sale', $this->sale]);
+            ->andFilterWhere(['like', 'amount', $this->amount]);
 
         return $dataProvider;
     }

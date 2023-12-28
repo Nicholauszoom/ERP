@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Purchase;
-use app\models\PurchaseSearch;
+use app\models\Stock;
+use app\models\StockSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PurchaseController implements the CRUD actions for Purchase model.
+ * StockController implements the CRUD actions for Stock model.
  */
-class PurchaseController extends Controller
+class StockController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Lists all Purchase models.
+     * Lists all Stock models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PurchaseSearch();
+        $searchModel = new StockSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Displays a single Purchase model.
+     * Displays a single Stock model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Creates a new Purchase model.
+     * Creates a new Stock model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Purchase();
+        $model = new Stock();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Updates an existing Purchase model.
+     * Updates an existing Stock model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Deletes an existing Purchase model.
+     * Deletes an existing Stock model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class PurchaseController extends Controller
     }
 
     /**
-     * Finds the Purchase model based on its primary key value.
+     * Finds the Stock model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Purchase the loaded model
+     * @return Stock the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Purchase::findOne(['id' => $id])) !== null) {
+        if (($model = Stock::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

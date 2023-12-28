@@ -3,14 +3,14 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\models\Purchase $model */
+/** @var app\models\Stock $model */
 
-$this->title = 'Create Purchase';
-$this->params['breadcrumbs'][] = ['label' => 'Purchases', 'url' => ['index']];
+$this->title = 'Create Stock';
+$this->params['breadcrumbs'][] = ['label' => 'Stocks', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->context->layout = 'create2_main';
 ?>
-<div class="purchase-create">
+<div class="stock-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

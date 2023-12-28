@@ -495,12 +495,23 @@ $sidebarItems = [
                   ><span class="hide-menu">Purchases</span></a
                 >
               </li>
+
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/stock"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-basket"></i
+                  ><span class="hide-menu">Stock</span></a
+                >
+              </li>
+
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/customer"
                   aria-expanded="false"
-                  ><i class="mdi mdi-border-inside"></i
+                  ><i class="mdi mdi-account-search"></i
                   ><span class="hide-menu">Customer</span></a
                 >
               </li>

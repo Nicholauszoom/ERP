@@ -1,25 +1,20 @@
 <?php
 
-use app\models\Pdetail;
 use app\models\Product;
-use app\models\Purchase;
 use app\models\Supplier;
+use app\models\Tax;
+use app\models\User;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /** @var yii\web\View $this */
 /** @var app\models\Purchase $model */
+
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Purchases', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 $this->context->layout = 'create2_main';
-$purchase=Pdetail::find()->where(['purchase_id'=>$model->id])->all();
-$total_amount= 0;
-foreach ($purchase as $purchase_details) {
-    $total_amount += $purchase_details->amount;
-}
-
 ?>
 <div class="purchase-view">
 
@@ -41,122 +36,95 @@ foreach ($purchase as $purchase_details) {
         'attributes' => [
             'id',
             [
-                'attribute'=>'supplier_id',
+                'attribute'=>'product',
                 'format'=>'raw',
                 'value'=>function ($model){
-                    $suplier = Supplier::findOne($model->supplier_id);
-                    $name = $suplier ? $suplier->company : 'Unknown';
-                     return $name;
+                    $product = Product::findOne($model->product);
+                    $prod = $product ? $product->name : 'Unknown';
+                     return $prod;
+                },
+            ],
+            [
+                'attribute' => 'price',
+                'value' => function ($model) {
+                    return number_format($model->price, 2, '.', ',');
+                },
+            ],
+            'quantity',
+            [
+                'attribute' => 'amount',
+                'value' => function ($model) {
+                    return number_format($model->amount, 2, '.', ',');
                 },
             ],
            
             [
-                'attribute' => 'pay_tems',
+                'attribute' => 'transport',
                 'value' => function ($model) {
-                    return getStatusLabel($model->pay_tems);
+                    return number_format($model->transport, 2, '.', ',');
                 },
             ],
-            'requested_by',
+            
+             
+            [
+                'attribute' => 'expenses',
+                'value' => function ($model) {
+                    return number_format($model->expenses, 2, '.', ',');
+                },
+            ],
+
+            [
+                'attribute'=>'tax_id',
+                'format'=>'raw',
+                'value'=>function ($model){
+                    $tax = Tax::findOne($model->tax_id);
+                    $method = $tax ? $tax->method : 'Unknown';
+                     return $method;
+                },
+            ],
+           
+            [
+                'attribute' => 'profit',
+                'value' => function ($model) {
+                    return number_format($model->profit, 2, '.', ',');
+                },
+            ],
+            
+            [
+                'attribute' => 'sale',
+                'value' => function ($model) {
+                    return number_format($model->sale, 2, '.', ',');
+                },
+            ],
+            [
+                'attribute'=>'supplier_id',
+                'format'=>'raw',
+                'value'=>function ($model){
+                    $supplier = Supplier::findOne($model->supplier_id);
+                    $company = $supplier ? $supplier->company : 'Unknown';
+                     return $company;
+                },
+            ],
             [
                 'attribute' => 'created_at',
                 'format' => ['date', 'php:Y-m-d H:i:s'],
             ],
-           
+            [
+                'attribute' => 'updated_at',
+                'format' => ['date', 'php:Y-m-d H:i:s'],
+            ],            
+            'created_by',
+            [
+                'attribute'=>'created_by',
+                'format'=>'raw',
+                'value'=>function ($model){
+                    $user = User::findOne($model->created_by);
+   
+                    $name = $user ? $user->username : 'Unknown';
+                     return $name;
+                },
+            ],
         ],
     ]) ?>
 
 </div>
-
-
-<table class="table">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-  
-      <th scope="col">item</th>
-      <th scope="col">Qty</th>
-      <th scope="col">Unit price</th>
-      <th scope="col">Amount</th>
-      <th scope="col">Created</th>
-      <th scope="col">Updated</th>
-      <th scope="col">Created By</th>
-      <th scope="col"></th>
-    </tr>
-    </thead>
-<tbody>
-<?php foreach ($purchase as $pdetail): ?>
-    <tr>
-        <?php 
-        // $item=Product::findOne($pdetail->item_id);
-        $item=Product::findOne(['id'=>$pdetail->item_id]);
-        ?>
-        <td><?= $item->name ?></td>
-        <td><?= $pdetail->quantity ?></td>
-        <td><?= $pdetail->unit_price ?></td>
-        <td><?= $pdetail->amount ?></td>
-        <td><?= Yii::$app->formatter->asDatetime($pdetail->created_at) ?></td>
-        <td><?= Yii::$app->formatter->asDatetime($pdetail->updated_at) ?></td>
-        
-        <td>
-        
-                <?= Html::a('<span class="glyphicon glyphicon-edit"></span>', ['update', 'id' => $pdetail->id], [
-                    'title' => 'Update',
-                    'data-method' => 'post',
-                    'data-pjax' => '0',
-                ]) ?>
-            
-
-            <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', ['delete', 'id' => $pdetail->id], [
-                'title' => 'Delete',
-                'data-confirm' => 'Are you sure you want to delete this updates',
-                'data-method' => 'post',
-                'data-pjax' => '0',
-            ]) ?>
-        </td>
-    </tr>
-<?php endforeach; ?>
-<tr>
-    <td>
-   
-            <?= Html::a('+ create request', '#', ['data-toggle' => 'modal', 'data-target' => '#createModal']) ?>
-    </td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-</tr>
-
-<tr>
-    <td></td>
-  
-    <td style="background-color: #f2f2f2;">Total Amonut:TSH <?= $total_amount?></td>
-    <td style="background-color: #f2f2f2;"></td>
-    <td style="background-color: #f2f2f2;"></td>
-    <td style="background-color: #f2f2f2;"></td>
-    <td style="background-color: #f2f2f2;"></td>
-    <td style="background-color: #f2f2f2;"></td>
-    <td style="background-color: #f2f2f2;"></td>
-</tr>
-</tbody>
-</table>
-
-
-
-<?php
-
-function getStatusLabel($status)
-{
-    $statusLabels = [
-        1 => 'cheque',
-        2 => 'cash',
-        
-
-       
-    ];
-
-    return isset($statusLabels[$status]) ? $statusLabels[$status] : '';
-}
-
-?>

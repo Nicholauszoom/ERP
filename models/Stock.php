@@ -7,27 +7,25 @@ use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "setting".
+ * This is the model class for table "stock".
  *
  * @property int $id
  * @property int|null $created_at
  * @property int|null $updated_at
  * @property int|null $created_by
- * @property string $comapny
- * @property string $logo
- * @property string $email
- * @property string $password
- * @property string $address
- * @property string $phone
+ * @property string $product
+ * @property int $supplier_id
+ * @property string $quantity
+ * @property string $amount
  */
-class Setting extends \yii\db\ActiveRecord
+class Stock extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'setting';
+        return 'stock';
     }
 
     public function behaviors(){
@@ -50,10 +48,9 @@ class Setting extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'created_by'], 'integer'],
-            [['comapny', 'logo', 'email', 'password', 'address', 'phone','product_profit'], 'required'],
-            [['comapny', 'email', 'password', 'address', 'phone','website','product_profit'], 'string', 'max' => 255],
-            [['logo'], 'safe'],
+            [['created_at', 'updated_at', 'created_by', 'supplier_id'], 'integer'],
+            [['product', 'supplier_id', 'quantity', 'amount'], 'required'],
+            [['product', 'quantity', 'amount'], 'string', 'max' => 255],
         ];
     }
 
@@ -67,14 +64,10 @@ class Setting extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
-            'comapny' => 'Comapny',
-            'website'=>'Website',
-            'logo' => 'Logo',
-            'email' => 'Email',
-            'password' => 'Password',
-            'address' => 'Address',
-            'phone' => 'Phone',
-            'product_profit'=>'product profit',
+            'product' => 'Product',
+            'supplier_id' => 'Supplier ID',
+            'quantity' => 'Quantity',
+            'amount' => 'Amount',
         ];
     }
 }

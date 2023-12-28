@@ -36,11 +36,15 @@ use yii\widgets\ActiveForm;
    </div>
    </div>
    <div class="row">
-   <div class="col-md-6">
+   <div class="col-md-4">
    <?= $form->field($model, 'address')->label('Company Address * <small class="text-muted">eg.Mbezi Beach</small>')->textInput() ?>
    </div>
-   <div class="col-md-6">
+   <div class="col-md-4">
    <?= $form->field($model, 'phone')->label('Comapny Phone * <small class="text-muted">eg.+255 67849..</small>')->textInput() ?>
+
+   </div>
+   <div class="col-md-4">
+   <?= $form->field($model, 'product_profit')->label('Default Product Profit * <small class="text-muted">Set defaul profit need to earn per product</small>')->textInput() ?>
 
    </div>
  
