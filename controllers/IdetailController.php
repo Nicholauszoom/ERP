@@ -65,36 +65,37 @@ class IdetailController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate($id)
-    {
-        $model = new Idetail();
+    public function actionCreate($invoiceId)
+{
+    $model = new Idetail();
 
-        $invoiceId=$id;
-        $model->invoice_id = $invoiceId;
+    
+    $model->invoice_id = $invoiceId;
 
+    $invoice_details = Idetail::find()->where(['invoice_id' => $invoiceId])->all();
 
-        $invoice_details=Idetail::find()->where(['invoice_id'=>$invoiceId])->all();
-
-        $total_amount= 0;
-        foreach ($invoice_details as $invoice_details) {
-            $total_amount += $invoice_details->amount;
-        }
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['customer/create', 'id' => $id]);
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
-
-        return $this->render('create', [
-            'model' => $model,
-            'total_amount'=>$total_amount,
-            'invoice_details'=>$invoice_details,
-            'invoiceId'=>$invoiceId,
-        ]);
+    $total_amount = 0;
+    foreach ($invoice_details as $invoice_detail) {
+        $total_amount += $invoice_detail->amount;
     }
+
+    if ($this->request->isPost) {
+        if ($model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['/invoice']);
+        } else {
+            // Handle form submission errors here
+        }
+    } else {
+        $model->loadDefaultValues();
+    }
+
+    return $this->render('create', [
+        'model' => $model,
+        'total_amount' => $total_amount,
+        'invoice_details' => $invoice_details,
+        'invoiceId' => $invoiceId,
+    ]);
+}
 
     /**
      * Updates an existing Idetail model.

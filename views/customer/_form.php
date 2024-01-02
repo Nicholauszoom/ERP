@@ -42,6 +42,24 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'city')->label('City * <small class="text-muted">eg.Dar es salaam, Kinondoni</small>')->textInput(['maxlength' => true]) ?>
     </div>
     
+    
+    <div class="row">
+    <div class="col-md-4">
+    <?= $form->field($model, 'tin')->label('TIN * <small class="text-muted">Customer TIN number</small>')->textInput(['maxlength' => true]) ?>
+
+    </div>
+
+    <div class="col-md-4">
+
+    <?= $form->field($model, 'vrn')->label('VRN * <small class="text-muted">Customer VRN</small>')->textInput(['maxlength' => true]) ?>
+
+
+    </div>
+    <div class="col-md-4">
+
+    <?= $form->field($model, 'account')->label('Account Balance * <small class="text-muted">Amount in TSH</small>')->textInput(['maxlength' => true]) ?>
+    </div>
+    
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

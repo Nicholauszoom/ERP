@@ -97,7 +97,7 @@ $setting= Setting::findOne(1);
 $js = <<< JS
 $(document).ready(function(){
     // Listen for input events on the quantity and price fields
-    $('#product-quantity, #product-price,#transp-charge,#tax-charge,#profit-dropdown').on('input', function() {
+    $('#product-quantity, #product-price,#transp-charge,#tax-charge,#profit-dropdown,#transport,#expences').on('input', function() {
         // Get the values of quantity and price
         var quantity = parseFloat($('#product-quantity').val() || 0);
         var price = parseFloat($('#product-price').val() || 0);

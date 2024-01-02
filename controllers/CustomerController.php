@@ -75,7 +75,7 @@ class CustomerController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['customer']);
+                return $this->redirect(['/customer']);
             }
         } else {
             $model->loadDefaultValues();

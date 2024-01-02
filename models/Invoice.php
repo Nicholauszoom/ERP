@@ -48,8 +48,8 @@ class Invoice extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'date', 'due'], 'required'],
-            [['type', 'created_by', 'status'], 'integer'],
+            [['type', 'date', 'due','customer_id'], 'required'],
+            [['type', 'created_by', 'status','customer_id'], 'integer'],
             [['date', 'due', 'created_at', 'updated_at'], 'string', 'max' => 255],
         ];
     }
@@ -68,6 +68,13 @@ class Invoice extends \yii\db\ActiveRecord
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',
             'status' => 'Status',
+            'customer_id'=>'Customer'
         ];
+    }
+
+
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::class, ['id' => 'customer_id']);
     }
 }

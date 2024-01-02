@@ -143,15 +143,17 @@ class InvoiceController extends Controller
     public function actionCreate()
     {
         $model = new Invoice();
-
+    
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['idetail/create', 'id' => $model->id]);
+                return $this->redirect(['idetail/create', 'invoiceId' => $model->id]);
+            } else {
+                // Handle form submission errors here
             }
         } else {
             $model->loadDefaultValues();
         }
-
+    
         return $this->render('create', [
             'model' => $model,
         ]);

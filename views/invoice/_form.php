@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Customer;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
@@ -42,7 +44,19 @@ use yii\widgets\ActiveForm;
     </div>
 
         <div class="row">
-    <div class="col-md-6">
+
+        <div class="col-md-4">
+
+        <?php 
+            $customer = Customer::find()->all();  ?>
+    <?= $form->field($model, 'customer_id')->label('Customer  * <small class="text-muted">Select customer Name</small>')->dropDownList(
+    ArrayHelper::map($customer, 'id', 'name'),
+    ['prompt' => 'select customer']
+); ?> 
+</div>
+
+
+    <div class="col-md-4">
 
     <?= $form->field($model, 'type')->label('Invoice type * <small class="text-muted">eg.invoice/receipt/Quote</small>')->dropDownList(
             [
@@ -56,7 +70,7 @@ use yii\widgets\ActiveForm;
         ); ?>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-4">
 
     <?= $form->field($model, 'status')->label('Invoice Status * <small class="text-muted">eg.open/paid</small>')->dropDownList(
     [

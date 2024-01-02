@@ -12,7 +12,7 @@ use yii\grid\GridView;
 
 $this->title = 'Idetails';
 $this->params['breadcrumbs'][] = $this->title;
-$this->context->layout = 'create_main';
+$this->context->layout = 'create2_main';
 ?>
 <div class="idetail-index">
 
